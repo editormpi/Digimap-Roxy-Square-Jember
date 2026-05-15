@@ -400,7 +400,10 @@ async function loadHistory() {
 
     let html = '';
     filtered.forEach(item => {
-      html += `<div class="history-card glass"><div class="history-card-head"><div><p class="name">${item.nama}</p><p class="meta">${item.tanggal} • ${item.waktu}</p></div><span class="id-tag">${item.id.slice(-6)}</span></div><div class="history-grid"><div class="history-item" data-edit="${item.id}|device|Device|${item.device||0}"><span class="key">Device</span><span class="value">${formatRp(item.device||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|acc|Accessories|${item.acc||0}"><span class="key">Acc</span><span class="value">${formatRp(item.acc||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|qoala|Qoala|${item.qoala||0}"><span class="key">Qoala</span><span class="value">${formatRp(item.qoala||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|tsel|Telkomsel|${item.tsel||0}"><span class="key">Tsel</span><span class="value">${formatRp(item.tsel||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|isat|Indosat|${item.isat||0}"><span class="key">Isat</span><span class="value">${formatRp(item.isat||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|xl|XL|${item.xl||0}"><span class="key">XL</span><span class="value">${formatRp(item.xl||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item airpods" data-edit="${item.id}|airpods|Airpods (Qty)|${item.airpods||0}"><span class="key">Airpods (Qty)</span><span class="value">${item.airpods||0} <i class="fas fa-pen" style="font-size:9px"></i></span></div></div></div>`;
+      const delBtn = isSuperUser
+        ? `<button class="hist-del" data-del="${item.id}|${item.nama}|${item.tanggal}" title="Hapus histori"><i class="fas fa-trash"></i></button>`
+        : '';
+      html += `<div class="history-card glass"><div class="history-card-head"><div><p class="name">${item.nama}</p><p class="meta">${item.tanggal} • ${item.waktu}</p></div><div class="hist-head-acts"><span class="id-tag">${item.id.slice(-6)}</span>${delBtn}</div></div><div class="history-grid"><div class="history-item" data-edit="${item.id}|device|Device|${item.device||0}"><span class="key">Device</span><span class="value">${formatRp(item.device||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|acc|Accessories|${item.acc||0}"><span class="key">Acc</span><span class="value">${formatRp(item.acc||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|qoala|Qoala|${item.qoala||0}"><span class="key">Qoala</span><span class="value">${formatRp(item.qoala||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|tsel|Telkomsel|${item.tsel||0}"><span class="key">Tsel</span><span class="value">${formatRp(item.tsel||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|isat|Indosat|${item.isat||0}"><span class="key">Isat</span><span class="value">${formatRp(item.isat||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item" data-edit="${item.id}|xl|XL|${item.xl||0}"><span class="key">XL</span><span class="value">${formatRp(item.xl||0)} <i class="fas fa-pen" style="font-size:9px"></i></span></div><div class="history-item airpods" data-edit="${item.id}|airpods|Airpods (Qty)|${item.airpods||0}"><span class="key">Airpods (Qty)</span><span class="value">${item.airpods||0} <i class="fas fa-pen" style="font-size:9px"></i></span></div></div></div>`;
     });
     c.innerHTML = html;
     c.querySelectorAll('[data-edit]').forEach(el => {
@@ -409,7 +412,34 @@ async function loadHistory() {
         promptEdit(id, col, label, Number(oldVal));
       };
     });
+    c.querySelectorAll('[data-del]').forEach(el => {
+      el.onclick = (e) => {
+        e.stopPropagation();
+        const [id, nama, tanggal] = el.dataset.del.split('|');
+        deleteHistory(id, nama, tanggal);
+      };
+    });
   } catch (err) { c.innerHTML = '<div class="empty-state" style="color:#ff453a">' + err.message + '</div>'; }
+}
+
+async function deleteHistory(id, nama, tanggal) {
+  if (!isSuperUser) return;
+  const r = await swal({
+    title: 'Hapus Histori?',
+    html: `Yakin hapus data <b>${nama}</b><br>tanggal <b>${tanggal}</b>?<br><small style="opacity:0.6">Tidak bisa dibatalkan.</small>`,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonText: 'Ya, Hapus',
+    cancelButtonText: 'Batal',
+    confirmButtonColor: '#ff453a'
+  });
+  if (!r.isConfirmed) return;
+  swal({ title: 'Menghapus...', allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+  try {
+    await remove(ref(db, `sales/${id}`));
+    swal({ title: 'Dihapus', icon: 'success', timer: 800, showConfirmButton: false });
+    loadHistory();
+  } catch (err) { swal({ title: 'Error', text: err.message, icon: 'error' }); }
 }
 
 async function promptEdit(id, col, label, oldVal) {
