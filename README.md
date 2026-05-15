@@ -1,73 +1,209 @@
-# Digimap Roxy Square Jember
+<div align="center">
 
-Aplikasi web pencatatan penjualan harian counter HP dengan dashboard real-time, leaderboard, dan panel admin. Dibuat dengan HTML/CSS/JS murni + Firebase Realtime Database.
+# 🍎 Digimap Roxy Square Jember
 
-![Status](https://img.shields.io/badge/status-production-green) ![License](https://img.shields.io/badge/license-MIT-blue)
+### Aplikasi Pencatatan Penjualan Counter HP — Mobile-First, iOS Style
 
----
+[![Status](https://img.shields.io/badge/status-production-success?style=for-the-badge)](https://github.com/editormpi/Digimap-Roxy-Square-Jember)
+[![Firebase](https://img.shields.io/badge/Firebase-Realtime_DB-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)](https://firebase.google.com)
+[![PWA](https://img.shields.io/badge/PWA-Ready-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white)](https://web.dev/progressive-web-apps/)
+[![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)](LICENSE)
 
-## Fitur
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=flat-square&logo=chartdotjs&logoColor=white)](https://www.chartjs.org)
 
-- **Login PIN** per anggota (4 digit)
-- **Input penjualan harian** per kategori: Device, Accessories, Qoala, Telkomsel, Indosat, XL, Airpods
-- **Histori** dengan edit inline per kolom
-- **Leaderboard** ranking penjualan dengan avatar
-- **Grafik bulanan** penjualan
-- **Dark mode / Light mode** dengan animasi halus
-- **32 preset warna aksen** + color picker bebas
-- **18 preset background** + color picker bebas (gradient & solid)
-- **Panel Admin (Super User)**:
-  - Tambah / hapus anggota
-  - Ganti nama tampilan
-  - Ganti PIN
-  - Ganti foto profil (auto-resize ke base64)
-  - Ubah tema & background global
-  - Export Excel dengan filter per anggota & per bulan
-  - Export langsung ke Google Sheets via Apps Script
-- **Permission**: anggota hanya bisa lihat/edit data sendiri; super user bisa lihat semua
-- **PWA-ready** (iOS-style UI, mobile-first, glassmorphism)
+**[🌐 Live Demo](https://editormpi.github.io/Digimap-Roxy-Square-Jember/)** • **[📖 Dokumentasi](#-cara-setup-untuk-pemilik-baru)** • **[🐛 Report Bug](https://github.com/editormpi/Digimap-Roxy-Square-Jember/issues)**
+
+![Banner](docs/images/banner.svg)
+
+</div>
 
 ---
 
-## Stack
+## 📑 Daftar Isi
 
-- **Frontend**: HTML5, CSS3 (CSS Variables), Vanilla JS (ES Modules)
-- **Backend**: Firebase Realtime Database (no auth — pakai PIN)
-- **Library**: Chart.js, SweetAlert2, SheetJS (xlsx), Font Awesome
-- **Font**: Inter (Google Fonts)
-
-Tidak ada build step, tidak perlu npm, langsung jalan di browser.
+- [✨ Fitur Unggulan](#-fitur-unggulan)
+- [📸 Tampilan Aplikasi](#-tampilan-aplikasi)
+- [🛠️ Teknologi](#%EF%B8%8F-teknologi)
+- [🚀 Cara Setup (Untuk Pemilik Baru)](#-cara-setup-untuk-pemilik-baru)
+- [📁 Struktur File](#-struktur-file)
+- [🗂️ Struktur Database](#%EF%B8%8F-struktur-database)
+- [💡 Tips & Troubleshooting](#-tips--troubleshooting)
+- [📄 Lisensi](#-lisensi)
 
 ---
 
-## Cara Setup (untuk pemilik baru)
+## ✨ Fitur Unggulan
 
-Berikut langkah lengkap kalau Anda ingin pakai aplikasi ini untuk usaha Anda sendiri.
+<table>
+<tr>
+<td width="50%">
 
-### 1. Fork / Clone repo ini
+### 👥 Untuk Anggota
+- 🔐 Login dengan PIN 4-digit
+- 📝 Input penjualan per kategori
+- 📊 Lihat histori sendiri
+- 🏆 Cek ranking leaderboard
+- 📈 Grafik penjualan bulanan
+- ✏️ Edit inline data sendiri
 
+</td>
+<td width="50%">
+
+### 👑 Untuk Super Admin
+- ➕ Tambah / hapus anggota
+- 🔑 Ganti PIN anggota
+- 📸 Upload foto profil (auto-resize)
+- 🗑️ Hapus histori penjualan
+- 🎨 Ubah tema & background global
+- 📤 Export Excel & Google Sheets
+
+</td>
+</tr>
+</table>
+
+<table>
+<tr>
+<td width="33%" align="center">
+
+### 🎨
+**Tema Lengkap**
+
+32 preset warna aksen<br>
+18 preset background<br>
++ color picker bebas
+
+</td>
+<td width="33%" align="center">
+
+### 🌓
+**Dark / Light Mode**
+
+Glassmorphism iOS-style<br>
+Smooth transition<br>
+Persisten per device
+
+</td>
+<td width="33%" align="center">
+
+### 📱
+**Mobile-First**
+
+PWA-ready<br>
+Touch-optimized<br>
+Safe-area iOS
+
+</td>
+</tr>
+</table>
+
+---
+
+## 📸 Tampilan Aplikasi
+
+<div align="center">
+
+### 🔐 Login Screen
+<img src="docs/images/screenshot-login.png" alt="Login Screen" width="300"/>
+
+### 📝 Input Penjualan
+<img src="docs/images/screenshot-input.png" alt="Input Form" width="300"/>
+
+### 📊 Histori & Ranking
+<table>
+<tr>
+<td><img src="docs/images/screenshot-history.png" alt="History" width="280"/></td>
+<td><img src="docs/images/screenshot-rank.png" alt="Ranking" width="280"/></td>
+</tr>
+</table>
+
+### 👑 Panel Admin
+<img src="docs/images/screenshot-admin.png" alt="Admin Panel" width="300"/>
+
+### 🎨 Tema & Background
+<img src="docs/images/screenshot-theme.png" alt="Theme Picker" width="300"/>
+
+</div>
+
+> 💡 Screenshots di atas adalah placeholder. Ganti dengan tangkapan layar aplikasi Anda di folder [`docs/images/`](docs/images/).
+
+---
+
+## 🛠️ Teknologi
+
+```
+┌─────────────────────────────────────────────────┐
+│  Frontend  │  HTML5 + CSS3 + Vanilla JS (ESM)   │
+│  Backend   │  Firebase Realtime Database         │
+│  Auth      │  PIN-based (no Firebase Auth)       │
+│  Charts    │  Chart.js                           │
+│  Alerts    │  SweetAlert2                        │
+│  Export    │  SheetJS (xlsx) + Apps Script       │
+│  Icons     │  Font Awesome 6                     │
+│  Fonts     │  Inter (Google Fonts)               │
+└─────────────────────────────────────────────────┘
+```
+
+> ⚡ **Zero build step.** Tidak perlu npm, webpack, atau bundler — langsung jalan di browser modern.
+
+---
+
+## 🚀 Cara Setup (Untuk Pemilik Baru)
+
+> 👋 Ingin pakai aplikasi ini untuk usaha Anda sendiri? Ikuti **9 langkah** berikut.
+
+### 📥 Langkah 1: Fork / Clone Repository
+
+<details>
+<summary><b>Klik di sini untuk lihat detail</b></summary>
+
+#### Option A — Fork (Recommended)
+1. Buka https://github.com/editormpi/Digimap-Roxy-Square-Jember
+2. Klik tombol **Fork** di pojok kanan atas
+3. Pilih akun Anda sebagai destination
+
+#### Option B — Clone Manual
 ```bash
 git clone https://github.com/editormpi/Digimap-Roxy-Square-Jember.git
 cd Digimap-Roxy-Square-Jember
 ```
 
-Atau klik tombol **Fork** di pojok kanan atas GitHub.
+</details>
 
-### 2. Buat project Firebase
+---
 
-1. Buka https://console.firebase.google.com → **Add project**
-2. Beri nama (mis. `counter-saya`) → ikuti wizard sampai selesai
-3. Di sidebar kiri pilih **Build → Realtime Database** → **Create Database**
-4. Pilih lokasi (rekomendasi: **Singapore** `asia-southeast1` untuk Indonesia)
-5. Pilih mode **Start in test mode** (kita ganti rules nanti)
+### 🔥 Langkah 2: Buat Project Firebase
 
-### 3. Daftarkan Web App di Firebase
+| Langkah | Aksi |
+|:---:|:---|
+| 1️⃣ | Buka [Firebase Console](https://console.firebase.google.com) |
+| 2️⃣ | Klik **Add project** → ikuti wizard |
+| 3️⃣ | Beri nama (mis. `counter-saya`) |
+| 4️⃣ | Pilih sidebar **Build → Realtime Database** |
+| 5️⃣ | Klik **Create Database** |
+| 6️⃣ | Pilih lokasi **`asia-southeast1` (Singapore)** untuk Indonesia |
+| 7️⃣ | Pilih mode **Start in test mode** |
+
+📸 **Petunjuk Visual:**
+<img src="docs/images/guide-firebase-create.png" alt="Create Firebase Project" width="600"/>
+
+---
+
+### 🌐 Langkah 3: Daftarkan Web App
 
 1. Di halaman **Project Overview**, klik ikon **`</>`** (Web)
-2. Beri nama app (mis. `Digimap Web`) → **Register app**
-3. Akan muncul kode `firebaseConfig`. **Copy seluruh objek itu** — bentuknya seperti:
+2. Beri nama app (mis. `Digimap Web`)
+3. Klik **Register app**
+4. **Copy seluruh objek** `firebaseConfig` yang muncul
 
-```js
+📸 **Petunjuk Visual:**
+<img src="docs/images/guide-firebase-webapp.png" alt="Register Web App" width="600"/>
+
+Bentuknya seperti ini:
+
+```javascript
 const firebaseConfig = {
   apiKey: "AIza...",
   authDomain: "counter-saya.firebaseapp.com",
@@ -79,18 +215,36 @@ const firebaseConfig = {
 };
 ```
 
-### 4. Tempel config ke aplikasi
+---
 
-1. Buka [`app.js`](app.js) dengan text editor
+### 📋 Langkah 4: Tempel Config ke Aplikasi
+
+1. Buka file [`app.js`](app.js) dengan text editor (mis. VSCode, Notepad++)
 2. Cari baris yang dimulai dengan `const firebaseConfig = {` (sekitar baris 4-12)
-3. **Ganti seluruh objek** dengan config milik Anda dari langkah 3
+3. **Replace seluruh objek** dengan config milik Anda dari Langkah 3
 4. **Save**
 
-### 5. Pasang Security Rules di Firebase
+```diff
+- const firebaseConfig = {
+-   apiKey: "AIzaSyC6PoHGLzZZKix8E8y2YVU6c8nThuGInAY",
+-   // ... config lama
+- };
++ const firebaseConfig = {
++   apiKey: "AIza...config_baru_anda",
++   // ... config baru
++ };
+```
 
-1. Di Firebase Console → **Realtime Database** → tab **Rules**
-2. Hapus seluruh isi editor
-3. Paste isi file [`firebase-rules.json`](firebase-rules.json):
+---
+
+### 🛡️ Langkah 5: Pasang Security Rules
+
+| | |
+|:---:|:---|
+| 1️⃣ | Buka **Firebase Console → Realtime Database → tab Rules** |
+| 2️⃣ | Hapus seluruh isi editor (Ctrl+A → Delete) |
+| 3️⃣ | Paste isi rules di bawah |
+| 4️⃣ | Klik **Publish** |
 
 ```json
 {
@@ -112,162 +266,277 @@ const firebaseConfig = {
 }
 ```
 
-4. Klik **Publish**
+📸 **Petunjuk Visual:**
+<img src="docs/images/guide-firebase-rules.png" alt="Set Firebase Rules" width="600"/>
 
-> ⚠️ Rules ini terbuka untuk siapa saja yang tahu URL database. Cocok untuk tim internal kecil yang sudah dilindungi PIN login. Untuk publik / multi-tenant, perlu migrasi ke Firebase Authentication.
+> ⚠️ **Catatan Keamanan:** Rules ini terbuka untuk siapa pun yang tahu URL database. Cocok untuk **tim internal kecil** yang sudah dilindungi PIN login. Untuk skala publik, perlu migrasi ke Firebase Authentication.
 
-### 6. Buat Super User pertama (`kiki`)
+---
 
-Karena aplikasi butuh minimal 1 super user untuk akses panel admin, tambahkan node `members/kiki` di Firebase:
+### 👑 Langkah 6: Buat Super User Pertama
 
-**Cara A — Otomatis lewat aplikasi:**
+Aplikasi butuh minimal 1 super user untuk akses panel admin. Pilih salah satu:
 
-Jalankan aplikasi (lihat langkah 7). Saat halaman dimuat, kode `ensureSuperUser()` akan auto-membuat `kiki` dengan PIN default `1234`.
+#### Cara A — Otomatis (Recommended)
+Jalankan aplikasi (Langkah 7). Saat halaman pertama dimuat, kode `ensureSuperUser()` akan auto-membuat user `kiki` dengan PIN default **`1234`**.
 
-**Cara B — Manual via Firebase Console (lebih aman):**
+> ⚠️ **WAJIB ganti PIN setelah login pertama!**
 
-1. Di Firebase Console → **Realtime Database** → tab **Data**
-2. Klik root → tambah child **`members`**
-3. Di dalam `members` → tambah child **`kiki`** (huruf kecil semua)
-4. Di dalam `kiki` → tambah 4 field:
+#### Cara B — Manual via Firebase Console
+1. Buka **Realtime Database → tab Data**
+2. Klik root → tambah child `members`
+3. Di dalam `members` → tambah child `kiki` (huruf kecil semua)
+4. Di dalam `kiki` → tambah field berikut:
 
-| Field | Tipe | Value |
-|---|---|---|
-| `pin` | string | `1234` (atau PIN pilihan Anda) |
-| `isSuperUser` | boolean | `true` |
-| `displayName` | string | `Admin Saya` |
-| `photo` | string | (kosongkan) |
+| Field | Tipe | Value | Catatan |
+|---|---|---|---|
+| `pin` | **string** | `1234` | ⚠️ Harus string, bukan number |
+| `isSuperUser` | boolean | `true` | |
+| `displayName` | string | `Admin` | Nama yang ditampilkan di UI |
+| `photo` | string | (kosong) | Akan diisi saat upload foto |
 
-> **PENTING**: Field `pin` harus disimpan sebagai **string**, bukan number. Kalau Firebase otomatis ubah jadi number, hapus dan ketik ulang.
+📸 **Petunjuk Visual:**
+<img src="docs/images/guide-firebase-superuser.png" alt="Create Super User" width="600"/>
 
-### 7. Jalankan aplikasi
+---
 
-Aplikasi adalah static HTML — tidak perlu server backend. Pilih salah satu cara:
+### 🌍 Langkah 7: Deploy Aplikasi
 
-**A) Lokal via XAMPP / live server:**
-- Copy folder ini ke `htdocs/` XAMPP
-- Buka http://localhost/Digimap-Roxy-Square-Jember/
+Aplikasi adalah **static HTML** — tidak perlu server backend. Pilih hosting:
 
-**B) GitHub Pages (gratis, online):**
-1. Push folder ini ke repo GitHub Anda
+<details>
+<summary><b>🏠 Option A — Lokal via XAMPP / Live Server</b></summary>
+
+```bash
+# Copy folder ke htdocs XAMPP
+cp -r Digimap-Roxy-Square-Jember/ /xampp/htdocs/
+
+# Akses di browser
+http://localhost/Digimap-Roxy-Square-Jember/
+```
+
+</details>
+
+<details>
+<summary><b>🐙 Option B — GitHub Pages (Gratis, Online)</b></summary>
+
+1. Push folder ke repo GitHub Anda
 2. Di repo → **Settings → Pages**
 3. Source: **Deploy from a branch**
-4. Branch: `main`, folder: `/ (root)` → **Save**
-5. Tunggu ~1 menit → aplikasi tersedia di `https://<username>.github.io/<repo-name>/`
+4. Branch: `main`, folder: `/ (root)`
+5. Klik **Save**
+6. Tunggu ~1 menit
+7. URL: `https://<username>.github.io/<repo-name>/`
 
-**C) Netlify / Vercel (gratis):**
-- Drag-and-drop folder ke https://app.netlify.com/drop, atau
+</details>
+
+<details>
+<summary><b>⚡ Option C — Netlify / Vercel (Gratis, Cepat)</b></summary>
+
+**Netlify:**
+- Drag-and-drop folder ke https://app.netlify.com/drop
+
+**Vercel:**
 - Connect repo GitHub di https://vercel.com → deploy
 
-### 8. Login pertama
+</details>
 
-1. Buka URL aplikasi
-2. Pilih **Kiki (Admin)** di dropdown
-3. Masukkan PIN **`1234`** (atau yang Anda set di langkah 6)
-4. Setelah masuk, **WAJIB SEGERA**:
-   - Tab **Admin** → klik ikon kunci di samping kiki → ganti PIN baru
-   - Tambah anggota tim lewat tombol **Tambah Anggota**
+---
 
-### 9. (Opsional) Setup Google Sheets Export
+### 🎉 Langkah 8: Login Pertama
 
-Kalau ingin tombol "Kirim ke Google Sheet" berfungsi:
+```
+1. Buka URL aplikasi Anda
+2. Pilih "Admin" di dropdown nama
+3. Masukkan PIN: 1234
+4. Setelah masuk:
+   ✅ Tab Admin → ganti PIN kiki dengan PIN aman
+   ✅ Tambah anggota tim lewat tombol "Tambah Anggota"
+   ✅ Ganti tema & background sesuai brand Anda
+```
+
+---
+
+### 📊 Langkah 9 (Opsional): Setup Google Sheets Export
+
+<details>
+<summary><b>Klik untuk lihat cara setup integrasi Google Sheets</b></summary>
 
 1. Buka Google Sheets baru — beri nama (mis. "Laporan Counter")
-2. **Extensions → Apps Script**
-3. Hapus isi default → copy seluruh isi file [`apps-script-template.gs`](apps-script-template.gs)
-4. **Deploy → New deployment → Type: Web app**
+2. Menu **Extensions → Apps Script**
+3. Hapus isi default → copy seluruh isi [`apps-script-template.gs`](apps-script-template.gs)
+4. **Deploy → New deployment**
+   - Type: **Web app**
    - Execute as: **Me**
    - Who has access: **Anyone**
-5. Klik **Deploy** → izinkan akses → **copy Web app URL** yang muncul
-6. Di aplikasi → tab Admin → **Kirim ke Google Sheet** → paste URL → Kirim
+5. Klik **Deploy** → izinkan akses
+6. **Copy Web app URL** yang muncul (berakhiran `/exec`)
+7. Di aplikasi → tab Admin → **Kirim ke Google Sheet** → paste URL → Kirim
 
-URL akan tersimpan di browser, tidak perlu paste ulang.
+URL akan tersimpan di browser, tidak perlu paste ulang next time.
+
+📸 **Petunjuk Visual:**
+<img src="docs/images/guide-appsscript.png" alt="Apps Script Setup" width="600"/>
+
+</details>
 
 ---
 
-## Struktur File
+## 📁 Struktur File
 
 ```
-Digimap-Roxy-Square-Jember/
-├── index.html              # Markup utama (login + app shell)
-├── style.css               # Semua styling (CSS Variables untuk theming)
-├── app.js                  # Logika aplikasi (ES Module, import Firebase)
-├── firebase-rules.json     # Template Security Rules
-├── apps-script-template.gs # Template Apps Script untuk export Sheets
-└── README.md               # File ini
+📦 Digimap-Roxy-Square-Jember/
+ ┣ 📜 index.html              # Markup utama (login + app shell)
+ ┣ 🎨 style.css               # Semua styling + CSS Variables untuk theming
+ ┣ ⚡ app.js                  # Logika aplikasi (ES Module + Firebase)
+ ┣ 🛡️ firebase-rules.json     # Template Security Rules
+ ┣ 📊 apps-script-template.gs # Template untuk Google Sheets integration
+ ┣ 📖 README.md               # File ini
+ ┗ 📂 docs/
+   ┗ 📂 images/               # Screenshots & gambar petunjuk
 ```
 
-Untuk kustomisasi:
-- **Ganti nama kategori penjualan** (Device, Accessories, dst): edit `index.html` (cari section "field-grid") dan `app.js` (fungsi `submitForm` dan `loadHistory`).
-- **Ganti nama brand / judul**: edit `index.html` (cari `<title>`, `<h1>Digimap</h1>`, dan `Roxy Square Jember`).
-- **Ganti palette default**: edit array `THEMES` dan `BACKGROUNDS` di `app.js`.
+### 🔧 Kustomisasi Cepat
+
+| Mau ganti... | Edit file | Cari... |
+|---|---|---|
+| Nama kategori penjualan | `index.html` | `class="field-grid"` |
+| Logic penyimpanan | `app.js` | function `submitForm` |
+| Judul / brand | `index.html` | `<title>`, `<h1>` |
+| Palette warna default | `app.js` | array `THEMES` |
+| Preset background | `app.js` | array `BACKGROUNDS` |
 
 ---
 
-## Struktur Database
+## 🗂️ Struktur Database
 
 ```
-your-firebase-db/
-├── members/
-│   ├── kiki/
-│   │   ├── pin: "1234"
-│   │   ├── isSuperUser: true
-│   │   ├── displayName: "Kiki (Admin)"
-│   │   └── photo: "data:image/jpeg;base64,..."
-│   └── nama-anggota/
-│       ├── pin: "9876"
-│       ├── isSuperUser: false
-│       ├── displayName: "Nama Lengkap"
-│       └── photo: ""
-├── sales/
-│   └── <auto-id>/
-│       ├── nama: "nama-anggota"
-│       ├── tanggal: "15/05/2026"
-│       ├── waktu: "14:30:25"
-│       ├── timestamp: 1747318225000
-│       ├── device: 1500000
-│       ├── acc: 250000
-│       ├── qoala: 0
-│       ├── tsel: 100000
-│       ├── isat: 50000
-│       ├── xl: 0
-│       └── airpods: 2
-└── settings/
-    ├── theme: "#0a84ff"
-    └── background: "midnight"
+🔥 your-firebase-db/
+ ┣ 👥 members/
+ ┃ ┣ kiki/
+ ┃ ┃ ┣ pin: "1234"
+ ┃ ┃ ┣ isSuperUser: true
+ ┃ ┃ ┣ displayName: "Kiki (Admin)"
+ ┃ ┃ ┗ photo: "data:image/jpeg;base64,..."
+ ┃ ┗ nama-anggota/
+ ┃   ┣ pin: "9876"
+ ┃   ┣ isSuperUser: false
+ ┃   ┣ displayName: "Nama Lengkap"
+ ┃   ┗ photo: ""
+ ┣ 💰 sales/
+ ┃ ┗ <auto-id>/
+ ┃   ┣ nama: "nama-anggota"
+ ┃   ┣ tanggal: "15/05/2026"
+ ┃   ┣ waktu: "14:30:25"
+ ┃   ┣ timestamp: 1747318225000
+ ┃   ┣ device: 1500000
+ ┃   ┣ acc: 250000
+ ┃   ┣ qoala: 0
+ ┃   ┣ tsel: 100000
+ ┃   ┣ isat: 50000
+ ┃   ┣ xl: 0
+ ┃   ┗ airpods: 2
+ ┗ ⚙️ settings/
+   ┣ theme: "#0a84ff"
+   ┗ background: "midnight"
 ```
 
 ---
 
-## Tips & Troubleshooting
+## 💡 Tips & Troubleshooting
 
-**Q: Error `PERMISSION_DENIED` saat upload foto / ganti tema**
-→ Rules Firebase belum di-update. Pasang isi `firebase-rules.json` di tab Rules.
+<details>
+<summary><b>❌ Error: <code>PERMISSION_DENIED</code> saat upload foto / ganti tema</b></summary>
 
-**Q: PIN tidak diterima padahal sudah benar**
-→ Cek di Firebase Console, pastikan field `pin` tipe **string** (ada tanda kutip), bukan number.
+**Penyebab:** Rules Firebase belum di-update.
 
-**Q: Dropdown nama kosong**
-→ Belum ada anggota di node `members`. Buat manual atau biarkan kode auto-create kiki.
+**Solusi:** Buka **Firebase Console → Realtime Database → tab Rules** → paste isi dari [Langkah 5](#%EF%B8%8F-langkah-5-pasang-security-rules) → klik **Publish**.
 
-**Q: Foto terlalu besar bikin DB cepat penuh**
-→ Foto sudah di-resize otomatis ke 240px JPEG kualitas 78%. Kalau mau lebih kecil, ubah parameter di `resizeImage()` di `app.js`. Untuk skala besar, pertimbangkan migrasi ke Firebase Storage.
+</details>
 
-**Q: Gimana cara backup data?**
-→ Firebase Console → Realtime Database → titik tiga di kanan atas → **Export JSON**.
+<details>
+<summary><b>❌ PIN tidak diterima padahal sudah benar</b></summary>
 
-**Q: Gimana cara restore?**
-→ Sebaliknya: **Import JSON** di node root.
+**Penyebab:** Field `pin` tersimpan sebagai **number**, bukan string.
+
+**Solusi:** Di Firebase Console → klik field `pin` → hapus → ketik ulang. Pastikan ada tanda kutip `"1234"`.
+
+</details>
+
+<details>
+<summary><b>❌ Dropdown nama kosong</b></summary>
+
+**Penyebab:** Belum ada anggota di node `members`.
+
+**Solusi:**
+- Refresh halaman (kiki akan auto-dibuat), atau
+- Tambah manual lewat Firebase Console seperti [Langkah 6](#-langkah-6-buat-super-user-pertama)
+
+</details>
+
+<details>
+<summary><b>📦 Foto bikin database cepat penuh</b></summary>
+
+Foto sudah di-resize otomatis ke **240px** dengan kualitas JPEG **78%**. Untuk skala besar:
+
+- Edit `resizeImage()` di `app.js` — turunkan parameter ke `200` atau `180`
+- Atau migrasi ke **Firebase Storage** (perlu enable di Firebase Console)
+
+</details>
+
+<details>
+<summary><b>💾 Cara backup / restore data?</b></summary>
+
+**Backup:** Firebase Console → Realtime Database → titik tiga di kanan atas → **Export JSON**
+
+**Restore:** Sama, tapi pilih **Import JSON** di node root
+
+> ⚠️ Import akan **menimpa** seluruh data di node tujuan. Pastikan klik node yang tepat sebelum import.
+
+</details>
+
+<details>
+<summary><b>🔄 Cara update kode kalau ada fitur baru dari repo asli?</b></summary>
+
+Kalau Anda fork repo ini:
+```bash
+git remote add upstream https://github.com/editormpi/Digimap-Roxy-Square-Jember.git
+git fetch upstream
+git merge upstream/main
+```
+
+> ⚠️ Jangan lupa cek `app.js` — jangan sampai `firebaseConfig` Anda ke-overwrite.
+
+</details>
 
 ---
 
-## Lisensi
+## 🤝 Kontribusi
 
-MIT — bebas dipakai, dimodif, dijual ulang. Atribusi tidak wajib tapi diapresiasi.
+Pull request & issue selalu welcome! Kalau Anda menambah fitur keren, share ke komunitas dengan submit PR.
+
+```bash
+# Fork → Clone → Branch → Code → PR
+git checkout -b feature/nama-fitur-keren
+git commit -m "Add: deskripsi fitur"
+git push origin feature/nama-fitur-keren
+```
 
 ---
 
-## Kredit
+## 📄 Lisensi
 
-Dikembangkan untuk Digimap Roxy Square Jember.
-Kontribusi & issue: silakan buka di repo asli.
+**MIT License** — bebas dipakai, dimodifikasi, dijual ulang.
+Atribusi tidak wajib tapi diapresiasi 🙏
+
+---
+
+<div align="center">
+
+### Made with ❤️ for Digimap Roxy Square Jember
+
+⭐ Jika project ini membantu, jangan lupa **star** repo-nya!
+
+[![Star History Chart](https://api.star-history.com/svg?repos=editormpi/Digimap-Roxy-Square-Jember&type=Date)](https://star-history.com/#editormpi/Digimap-Roxy-Square-Jember&Date)
+
+</div>
