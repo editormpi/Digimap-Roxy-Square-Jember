@@ -134,7 +134,40 @@
           <button class="mode-btn" data-mode="dark"><i class="fas fa-moon"></i> Gelap</button>
           <button class="mode-btn" data-mode="light"><i class="fas fa-sun"></i> Terang</button>
         </div>
-        <div class="theme-grid" id="theme_grid"></div>
+
+        <div class="color-section">
+          <div class="color-section-title"><i class="fas fa-droplet"></i> Warna Aksen — Preset</div>
+          <div class="theme-grid expanded" id="theme_grid"></div>
+        </div>
+
+        <div class="color-section">
+          <div class="color-section-title"><i class="fas fa-eye-dropper"></i> Warna Aksen — Bebas</div>
+          <div class="color-picker-row">
+            <input type="color" id="custom_accent" value="#0a84ff">
+            <div class="label-info">
+              <p class="t">Pilih warna sendiri</p>
+              <p class="s">Klik kotak warna untuk pilih</p>
+            </div>
+            <button class="reset-btn" id="reset_accent">Reset</button>
+          </div>
+        </div>
+
+        <div class="color-section">
+          <div class="color-section-title"><i class="fas fa-image"></i> Background — Preset</div>
+          <div class="bg-grid" id="bg_grid"></div>
+        </div>
+
+        <div class="color-section">
+          <div class="color-section-title"><i class="fas fa-fill-drip"></i> Background — Bebas</div>
+          <div class="color-picker-row">
+            <input type="color" id="custom_bg" value="#000000">
+            <div class="label-info">
+              <p class="t">Warna background</p>
+              <p class="s">Polos sesuai pilihan</p>
+            </div>
+            <button class="reset-btn" id="reset_bg">Reset</button>
+          </div>
+        </div>
       </div>
 
       <div class="admin-section glass">

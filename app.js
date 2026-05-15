@@ -25,26 +25,110 @@ let isSuperUser = false;
 
 const formatRp = (n) => new Intl.NumberFormat('id-ID', { minimumFractionDigits: 0 }).format(n);
 
-// ===== THEME PRESETS =====
+// ===== THEME PRESETS — 32 warna =====
 const THEMES = [
-  { id: 'blue',   name: 'Biru',    color: '#0a84ff', rgb: '10, 132, 255' },
-  { id: 'green',  name: 'Hijau',   color: '#30d158', rgb: '48, 209, 88' },
-  { id: 'orange', name: 'Oranye',  color: '#ff9f0a', rgb: '255, 159, 10' },
-  { id: 'red',    name: 'Merah',   color: '#ff453a', rgb: '255, 69, 58' },
-  { id: 'purple', name: 'Ungu',    color: '#bf5af2', rgb: '191, 90, 242' },
-  { id: 'pink',   name: 'Pink',    color: '#ff375f', rgb: '255, 55, 95' },
-  { id: 'teal',   name: 'Teal',    color: '#5ac8fa', rgb: '90, 200, 250' },
-  { id: 'indigo', name: 'Indigo',  color: '#5e5ce6', rgb: '94, 92, 230' },
-  { id: 'yellow', name: 'Kuning',  color: '#ffd60a', rgb: '255, 214, 10' },
-  { id: 'mint',   name: 'Mint',    color: '#63e6e2', rgb: '99, 230, 226' }
+  { id: 'blue',       name: 'Biru iOS',     color: '#0a84ff' },
+  { id: 'ocean',      name: 'Ocean',        color: '#0077be' },
+  { id: 'navy',       name: 'Navy',         color: '#1e3a8a' },
+  { id: 'indigo',     name: 'Indigo',       color: '#5e5ce6' },
+  { id: 'purple',     name: 'Ungu',         color: '#bf5af2' },
+  { id: 'violet',     name: 'Violet',       color: '#8b5cf6' },
+  { id: 'magenta',    name: 'Magenta',      color: '#d946ef' },
+  { id: 'pink',       name: 'Pink',         color: '#ff375f' },
+  { id: 'rose',       name: 'Rose',         color: '#f43f5e' },
+  { id: 'red',        name: 'Merah',        color: '#ff453a' },
+  { id: 'crimson',    name: 'Crimson',      color: '#dc2626' },
+  { id: 'maroon',     name: 'Maroon',       color: '#7f1d1d' },
+  { id: 'orange',     name: 'Oranye',       color: '#ff9f0a' },
+  { id: 'coral',      name: 'Coral',        color: '#fb7185' },
+  { id: 'amber',      name: 'Amber',        color: '#f59e0b' },
+  { id: 'yellow',     name: 'Kuning',       color: '#ffd60a' },
+  { id: 'gold',       name: 'Gold',         color: '#eab308' },
+  { id: 'lime',       name: 'Lime',         color: '#84cc16' },
+  { id: 'green',      name: 'Hijau iOS',    color: '#30d158' },
+  { id: 'emerald',    name: 'Emerald',      color: '#10b981' },
+  { id: 'forest',     name: 'Forest',       color: '#166534' },
+  { id: 'teal',       name: 'Teal',         color: '#14b8a6' },
+  { id: 'mint',       name: 'Mint',         color: '#63e6e2' },
+  { id: 'cyan',       name: 'Cyan',         color: '#06b6d4' },
+  { id: 'sky',        name: 'Sky',          color: '#5ac8fa' },
+  { id: 'slate',      name: 'Slate',        color: '#64748b' },
+  { id: 'gray',       name: 'Gray',         color: '#71717a' },
+  { id: 'stone',      name: 'Stone',        color: '#78716c' },
+  { id: 'brown',      name: 'Brown',        color: '#92400e' },
+  { id: 'bronze',     name: 'Bronze',       color: '#a16207' },
+  { id: 'black',      name: 'Hitam',        color: '#1c1c1e' },
+  { id: 'silver',     name: 'Silver',       color: '#a8a29e' }
 ];
 
-function applyTheme(themeId) {
-  const t = THEMES.find(x => x.id === themeId) || THEMES[0];
-  document.documentElement.style.setProperty('--accent', t.color);
-  document.documentElement.style.setProperty('--accent-rgb', t.rgb);
-  localStorage.setItem(THEME_KEY, t.id);
-  document.querySelectorAll('.theme-swatch').forEach(s => s.classList.toggle('active', s.dataset.theme === t.id));
+// ===== BACKGROUND PRESETS =====
+const BACKGROUNDS = [
+  { id: 'default-dark',   name: 'Default Gelap',  type: 'default', mode: 'dark' },
+  { id: 'default-light',  name: 'Default Terang', type: 'default', mode: 'light' },
+  { id: 'midnight',       name: 'Midnight',       css: 'linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%)' },
+  { id: 'sunset',         name: 'Sunset',         css: 'linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)' },
+  { id: 'ocean',          name: 'Ocean',          css: 'linear-gradient(135deg, #2e3192 0%, #1bffff 100%)' },
+  { id: 'aurora',         name: 'Aurora',         css: 'linear-gradient(135deg, #00c6ff 0%, #0072ff 100%)' },
+  { id: 'forest',         name: 'Forest',         css: 'linear-gradient(135deg, #134e5e 0%, #71b280 100%)' },
+  { id: 'lavender',       name: 'Lavender',       css: 'linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)' },
+  { id: 'peach',          name: 'Peach',          css: 'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)' },
+  { id: 'mint',           name: 'Mint',           css: 'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)' },
+  { id: 'rose-gold',      name: 'Rose Gold',      css: 'linear-gradient(135deg, #ee9ca7 0%, #ffdde1 100%)' },
+  { id: 'cosmic',         name: 'Cosmic',         css: 'linear-gradient(135deg, #4776e6 0%, #8e54e9 100%)' },
+  { id: 'fire',           name: 'Fire',           css: 'linear-gradient(135deg, #f12711 0%, #f5af19 100%)' },
+  { id: 'emerald',        name: 'Emerald',        css: 'linear-gradient(135deg, #348f50 0%, #56b4d3 100%)' },
+  { id: 'royal',          name: 'Royal',          css: 'linear-gradient(135deg, #141e30 0%, #243b55 100%)' },
+  { id: 'cherry',         name: 'Cherry',         css: 'linear-gradient(135deg, #eb3349 0%, #f45c43 100%)' },
+  { id: 'mono-black',     name: 'Solid Hitam',    css: '#000000' },
+  { id: 'mono-white',     name: 'Solid Putih',    css: '#f2f2f7' }
+];
+
+function hexToRgb(hex) {
+  hex = hex.replace('#', '');
+  if (hex.length === 3) hex = hex.split('').map(c => c + c).join('');
+  const num = parseInt(hex, 16);
+  return `${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255}`;
+}
+
+function applyAccent(color) {
+  const rgb = hexToRgb(color);
+  document.documentElement.style.setProperty('--accent', color);
+  document.documentElement.style.setProperty('--accent-rgb', rgb);
+  localStorage.setItem(THEME_KEY, color);
+  document.querySelectorAll('.theme-swatch').forEach(s => s.classList.toggle('active', s.dataset.color === color));
+  const inp = document.getElementById('custom_accent');
+  if (inp) inp.value = color;
+}
+
+function applyBackground(bgId) {
+  const root = document.documentElement;
+  if (!bgId || bgId === 'default-dark' || bgId === 'default-light') {
+    root.style.removeProperty('--bg-custom');
+    if (bgId === 'default-light') applyMode('light');
+    if (bgId === 'default-dark') applyMode('dark');
+    localStorage.setItem('digimap_bg', bgId || '');
+  } else if (bgId.startsWith('#')) {
+    root.style.setProperty('--bg-custom', bgId);
+    localStorage.setItem('digimap_bg', bgId);
+  } else {
+    const bg = BACKGROUNDS.find(b => b.id === bgId);
+    if (bg && bg.css) {
+      root.style.setProperty('--bg-custom', bg.css);
+      localStorage.setItem('digimap_bg', bgId);
+    }
+  }
+  document.querySelectorAll('.bg-swatch').forEach(s => s.classList.toggle('active', s.dataset.bg === bgId));
+}
+
+// Legacy alias
+function applyTheme(input) {
+  // Accept old preset id or hex
+  if (typeof input === 'string' && input.startsWith('#')) {
+    applyAccent(input);
+  } else {
+    const t = THEMES.find(x => x.id === input);
+    applyAccent(t ? t.color : '#0a84ff');
+  }
 }
 function applyMode(mode) {
   document.documentElement.setAttribute('data-theme', mode);
@@ -55,10 +139,19 @@ function applyMode(mode) {
 }
 async function loadGlobalTheme() {
   try {
-    const snap = await get(ref(db, 'settings/theme'));
-    if (snap.exists()) applyTheme(snap.val());
-    else applyTheme(localStorage.getItem(THEME_KEY) || 'blue');
-  } catch { applyTheme(localStorage.getItem(THEME_KEY) || 'blue'); }
+    const snap = await get(ref(db, 'settings'));
+    const s = snap.exists() ? snap.val() : {};
+    applyTheme(s.theme || localStorage.getItem(THEME_KEY) || '#0a84ff');
+    if (s.background) applyBackground(s.background);
+    else {
+      const local = localStorage.getItem('digimap_bg');
+      if (local) applyBackground(local);
+    }
+  } catch {
+    applyTheme(localStorage.getItem(THEME_KEY) || '#0a84ff');
+    const local = localStorage.getItem('digimap_bg');
+    if (local) applyBackground(local);
+  }
 }
 applyMode(localStorage.getItem(MODE_KEY) || 'dark');
 
@@ -504,19 +597,68 @@ async function exportGoogleSheet() {
 // ===== ADMIN PANEL =====
 async function loadAdmin() {
   if (!isSuperUser) return;
-  // Theme presets
+  // Theme presets — render 32 swatches
   const grid = document.getElementById('theme_grid');
   grid.innerHTML = THEMES.map(t => `
-    <div class="theme-swatch" data-theme="${t.id}" title="${t.name}"
-         style="background: linear-gradient(135deg, ${t.color} 0%, rgba(${t.rgb}, 0.7) 100%);">
+    <div class="theme-swatch" data-color="${t.color}" title="${t.name}"
+         style="background: linear-gradient(135deg, ${t.color} 0%, ${t.color}99 100%);">
     </div>`).join('');
   grid.querySelectorAll('.theme-swatch').forEach(sw => {
     sw.onclick = async () => {
-      applyTheme(sw.dataset.theme);
-      try { await set(ref(db, 'settings/theme'), sw.dataset.theme); } catch (e) { console.error(e); }
+      applyAccent(sw.dataset.color);
+      try { await set(ref(db, 'settings/theme'), sw.dataset.color); } catch (e) { console.error(e); }
     };
   });
-  applyTheme(localStorage.getItem(THEME_KEY) || 'blue');
+
+  // Background presets — render swatches
+  const bgGrid = document.getElementById('bg_grid');
+  if (bgGrid) {
+    bgGrid.innerHTML = BACKGROUNDS.map(b => {
+      const preview = b.type === 'default'
+        ? (b.mode === 'light' ? '#f2f2f7' : '#000')
+        : b.css;
+      return `<div class="bg-swatch" data-bg="${b.id}" title="${b.name}" style="background: ${preview};"></div>`;
+    }).join('');
+    bgGrid.querySelectorAll('.bg-swatch').forEach(sw => {
+      sw.onclick = async () => {
+        applyBackground(sw.dataset.bg);
+        try { await set(ref(db, 'settings/background'), sw.dataset.bg); } catch (e) { console.error(e); }
+      };
+    });
+  }
+
+  // Custom accent color picker (live)
+  const customAccent = document.getElementById('custom_accent');
+  if (customAccent) {
+    customAccent.value = (localStorage.getItem(THEME_KEY) || '#0a84ff').startsWith('#')
+      ? localStorage.getItem(THEME_KEY) : '#0a84ff';
+    customAccent.oninput = () => applyAccent(customAccent.value);
+    customAccent.onchange = async () => {
+      try { await set(ref(db, 'settings/theme'), customAccent.value); } catch (e) { console.error(e); }
+    };
+  }
+  const resetAccent = document.getElementById('reset_accent');
+  if (resetAccent) resetAccent.onclick = async () => {
+    applyAccent('#0a84ff');
+    try { await set(ref(db, 'settings/theme'), '#0a84ff'); } catch (e) { console.error(e); }
+  };
+
+  // Custom background color picker
+  const customBg = document.getElementById('custom_bg');
+  if (customBg) {
+    const cur = localStorage.getItem('digimap_bg') || '';
+    if (cur.startsWith('#')) customBg.value = cur;
+    customBg.oninput = () => applyBackground(customBg.value);
+    customBg.onchange = async () => {
+      try { await set(ref(db, 'settings/background'), customBg.value); } catch (e) { console.error(e); }
+    };
+  }
+  const resetBg = document.getElementById('reset_bg');
+  if (resetBg) resetBg.onclick = async () => {
+    applyBackground('');
+    try { await remove(ref(db, 'settings/background')); } catch (e) { console.error(e); }
+  };
+
   applyMode(localStorage.getItem(MODE_KEY) || 'dark');
 
   // Member list
