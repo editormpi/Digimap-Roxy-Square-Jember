@@ -1,0 +1,22 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "members": {
+      ".read": true,
+      ".write": false
+    },
+
+    "settings": {
+      ".read": true,
+      ".write": true
+    },
+
+    "sales": {
+      ".indexOn": ["timestamp", "nama"],
+      ".read": true,
+      ".write": true
+    }
+  }
+}
